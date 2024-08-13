@@ -78,7 +78,7 @@ You should be given a root shell, but notice that if you run `ip addr` you have 
 
 Welcome to the namespace! We will need to add virtual interfaces to connect them together. These interfaces will effectively work like real network adapters.
 
-To do this, enter the following commands **not in a namespace!**:
+To do this, enter the following commands **not in a namespace!** (Use `exit` to close out of the shell in the namespace):
 
 ```shell
 sudo ip link add r0 type veth peer name c0

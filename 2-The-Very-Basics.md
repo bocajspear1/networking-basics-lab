@@ -1,13 +1,22 @@
 # 2. The Very Basics
 
-The next step is get the basic connectivity, so at least new namespace can connect to the ones next to it.
+The next step is get the basic connectivity, so at least the new namespaces can connect to the ones next to it.
+
+## Sidenote: Keeping Track of Namespaces
+
+To differentiate between shells in different namespaces, you can change the prompt when you open a new shell with (replace `center` with the name of the namespace):
+```
+export PS1="(center)$PS1"
+```
+
+It's also recommended using multiple `tmux` windows or terminal tabs to make things easy to switch between.
 
 ## Bringing an Interface Up
 
 Firstly, we need to bring the interface up. By default interfaces are added in the DOWN state, meaning they are off. You can see this by running `ip addr` an the interface will say `state DOWN`. (Note: ignore the value after the `@`, the inteface name if everything before the `@`)
 
 ```shell
-root@podman-test:/home/jacob# ip addr
+root@test:/home/jacob# ip addr
 1: lo: <LOOPBACK> mtu 65536 qdisc noop state DOWN group default qlen 1000
     link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
 5: c0@if6: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN group default qlen 1000
@@ -50,7 +59,7 @@ left <------------> center <------------> right
    .2            .1       .1            .2
 ```
 
-To set an IP address on an interface (since the shells for the namespaces are root, I'm not including `sudo`):
+To set an IP address on an interface (since the shells for the namespaces are as "root", I'm not including `sudo`):
 
 ```shell
 ip addr add <IP>/<PREFIX> dev <INTERFACE> 
